@@ -25,11 +25,22 @@ System Monitor — это легковесный системный монито
 - Операционная система Linux.
 
 ▌Сборка
-g++ -std=c++17 -Wall -O3 monitor.cpp main.cpp -o sysmon
+```
+g++ -std=c++17 -Wall -O3 monitor.cpp main.cpp -o system-monitor
+```
 
+или CMake'ом
+
+```
+mkdir build && cd build
+cmake ..
+make -j3 && ./system-monitor
+```
 
 ▌Запуск
+```
 ./sysmon
+```
 
 Примечание: для корректного чтения /proc/diskstats на некоторых дистрибутивах могут потребоваться права root.
 
