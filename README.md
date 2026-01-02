@@ -24,22 +24,14 @@ System Monitor — это легковесный системный монито
 - Компилятор с поддержкой C++17 (g++ 7+ или clang 5+).
 - Операционная система Linux.
 
-▌Сборка
-```
-g++ -std=c++17 -Wall -O3 monitor.cpp main.cpp -o system-monitor
-```
-
-или CMake'ом
+▌Сборка с помощью CMake и запуск
 
 ```
+git clone https://github.com/MentaL0-main/system-monitor.git
+cd system-monitor
 mkdir build && cd build
 cmake ..
 make -j3 && ./system-monitor
-```
-
-▌Запуск
-```
-./sysmon
 ```
 
 Примечание: для корректного чтения /proc/diskstats на некоторых дистрибутивах могут потребоваться права root.
