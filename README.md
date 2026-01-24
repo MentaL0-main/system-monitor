@@ -56,6 +56,6 @@ How it works
 
 -------------------------------------------------------------------------------
 
-📝 License
+License
 
 The project is distributed under MIT license. Use freely for your purposes.
