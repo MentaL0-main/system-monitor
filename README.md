@@ -19,11 +19,14 @@ The project is based on the principles of separation of responsibilities (SRP):
 -Monitor: The core of the system. Responsible for parsing /proc/stat, /proc/meminfo and /proc/diskstats.
 -Main: View layer. Responsible for ANSI interface rendering and update cycle management.
 
+----------------------------------------------------------------------------
 Quick start
 
 Requirements
 - Compiler supporting C++17 (g++ 7+ or clang 5+).
 - Linux operating system.
+- CMake
+- Make
 
 Build with CMake and run
 
@@ -37,6 +40,7 @@ make -j3 && . /system-monitor
 
 Note: some distributions may require root to read /proc/diskstats correctly.
 
+-------------------------------------------------------------------------------
 Interface
 
 The program displays data in the following format:
@@ -49,6 +53,8 @@ How it works
 1. CPU: Calculate the difference between the active time of the processor and the idle time between two iterations.
 2. RAM: Takes MemTotal - MemAvailable, which is the most accurate representation of the memory used in modern Linux.
 3. Disk: The number of sectors from /proc/diskstats is read, the difference is calculated, multiplied by 512 bytes and divided by the exact time passed between measurements (via steady_clock).
+
+-------------------------------------------------------------------------------
 
 📝 License
 
