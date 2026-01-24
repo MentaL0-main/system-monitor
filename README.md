@@ -1,54 +1,54 @@
 # System Monitor
 
-System Monitor - это легковесный системный монитор для Linux, написанный на C++17. Он предоставляет real-time статистику по загрузке процессора, использованию оперативной памяти и скорости записи на диск, работая напрямую с файловой системой ядра /proc.
-<img src="./screenshots/screenshot.png" alt="Описание" width="1200" height="900">
+System Monitor is a lightweight system monitor for Linux written in C++17. It provides real-time statistics on CPU load, RAM usage and disk write speed by working directly with/proc kernel file system.
+<img src=". /screenshots/screenshot.png" alt="Description" width="1200" height="900">
 
-## Особенности
+## Features
 
-- Zero Dependencies: Не требует сторонних библиотек. Только стандартная библиотека C++.
-- Accurate CPU Usage: Расчет нагрузки процессора через дельту состояний (учитывает user, system, iowait, steal и др.).
-- Smart Memory: Отображает реально занятую память, основываясь на MemAvailable, а не просто MemFree.
-- Auto-Disk Discovery: Автоматически определяет активные физические диски (sda, sdb, nvme) и суммирует их скорость записи, игнорируя виртуальные устройства и разделы.
-- Modern C++: Использование RAII, std::chrono, steady_clock и типобезопасного парсинга.
-- Beautiful UI: Интуитивно понятный консольный интерфейс с цветовой индикацией и Progress Bars.
+- Zero Dependencies: Does not require external libraries. Only the standard C++ library.
+- Accurate CPU Usage: Calculation of processor load through delta states (takes into account user, system, iowait, steal etc.).
+- Smart Memory: Displays real occupied memory based on MemAvailable, not just MemFree.
+- Auto-Disk Discovery: Automatically detects active physical disks (sda, sdb, nvme) and adds up their write speed, ignoring virtual devices and partitions.
+-Modern C++: Use of RAII, std::chrono, steady_clock and type-safe parsing.
+- Beautiful UI: Intuitive console interface with color display and Progress Bars.
 
-▌Архитектура
+Architecture
 
-Проект построен на принципах разделения ответственности (SRP):
-- Monitor: Ядро системы. Отвечает за парсинг /proc/stat, /proc/meminfo и /proc/diskstats.
-- Main: Слой представления. Отвечает за рендеринг ANSI-интерфейса и управление циклом обновления.
+The project is based on the principles of separation of responsibilities (SRP):
+-Monitor: The core of the system. Responsible for parsing /proc/stat, /proc/meminfo and /proc/diskstats.
+-Main: View layer. Responsible for ANSI interface rendering and update cycle management.
 
-▌Быстрый старт
+Quick start
 
-▌Требования
-- Компилятор с поддержкой C++17 (g++ 7+ или clang 5+).
-- Операционная система Linux.
+Requirements
+- Compiler supporting C++17 (g++ 7+ or clang 5+).
+- Linux operating system.
 
-▌Сборка с помощью CMake и запуск
+Build with CMake and run
 
-```
+`
 git clone https://github.com/MentaL0-main/system-monitor.git
 cd system-monitor
 mkdir build && cd build
-cmake ..
-make -j3 && ./system-monitor
-```
+cmake .
+make -j3 && . /system-monitor
+`
 
-Примечание: для корректного чтения /proc/diskstats на некоторых дистрибутивах могут потребоваться права root.
+Note: some distributions may require root to read /proc/diskstats correctly.
 
-▌Интерфейс
+Interface
 
-Программа выводит данные в следующем формате:
-- CPU Usage: Графическая полоса (зеленая → красная) + процент.
-- Memory: Объем в МБ + процент использования от общего объема.
-- Disk Write: Текущая скорость записи в МБ/с, вычисленная за интервал обновления.
+The program displays data in the following format:
+- CPU Usage: Graphic strip (green red) + percent.
+-Memory: Volume in MB + percentage of usage of the total volume.
+- Disk Write: The current write speed in MB/C, calculated for the refresh interval.
 
-▌Как это работает
+How it works
 
-1. CPU: Вычисляется разница между активным временем процессора и временем простоя между двумя итерациями.
-2. RAM: Берется MemTotal - MemAvailable, что является наиболее точным представлением используемой памяти в современном Linux.
-3. Disk: Считывается количество секторов из /proc/diskstats, вычисляется разница, умножается на 512 байт и делится на точное время, прошедшее между замерами (через steady_clock).
+1. CPU: Calculate the difference between the active time of the processor and the idle time between two iterations.
+2. RAM: Takes MemTotal - MemAvailable, which is the most accurate representation of the memory used in modern Linux.
+3. Disk: The number of sectors from /proc/diskstats is read, the difference is calculated, multiplied by 512 bytes and divided by the exact time passed between measurements (via steady_clock).
 
-▌📝 Лицензия
+📝 License
 
-Проект распространяется под лицензией MIT. Используйте свободно в своих целях.
+The project is distributed under MIT license. Use freely for your purposes.
