@@ -12,6 +12,7 @@ System Monitor is a lightweight system monitor for Linux written in C++17. It pr
 -Modern C++: Use of RAII, std::chrono, steady_clock and type-safe parsing.
 - Beautiful UI: Intuitive console interface with color display and Progress Bars.
 
+-----------------------------------------------------------------------
 Architecture
 
 The project is based on the principles of separation of responsibilities (SRP):
