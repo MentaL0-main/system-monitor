@@ -30,13 +30,13 @@ Requirements
 
 Build with CMake and run
 
-`
+```
 git clone https://github.com/MentaL0-main/system-monitor.git
 cd system-monitor
 mkdir build && cd build
 cmake .
 make -j3 && . /system-monitor
-`
+```
 
 Note: some distributions may require root to read /proc/diskstats correctly.
 
