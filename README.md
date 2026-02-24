@@ -1,7 +1,7 @@
 # System Monitor
 
 System Monitor is a lightweight system monitor for Linux written in C++17. It provides real-time statistics on CPU load, RAM usage and disk write speed by working directly with/proc kernel file system.
-<img src=". /screenshots/screenshot.png" alt="Description" width="1200" height="900">
+<img src="./screenshots/screenshot.png" alt="Description" width="1200" height="900">
 
 ## Features
 
